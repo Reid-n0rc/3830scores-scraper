@@ -78,10 +78,32 @@ del session.headers["X-Requested-By"]
 
 ---
 
-## Reporting a concern
+## Reporting a Vulnerability
 
-This is a small personal tool with no public user base and no package
-release. If you find a way the host allowlist can be bypassed, or any
-other issue that could turn this into something other than a polite,
-identified, rate-limited reader of 3830scores.com, open an issue in this
-repo or contact the maintainer directly rather than exploiting it.
+**Please DO NOT open a public GitHub issue for security vulnerabilities.**
+
+Instead, please use GitHub's **Private Vulnerability Reporting** feature to submit your report securely and privately.
+
+### How to Submit a Private Report:
+1. Navigate to the main page of this repository on GitHub.
+2. Click on the **Security** tab (located under the repository name).
+3. On the left sidebar, click **Reporting**.
+4. Click the **Report a vulnerability** button to open the advisory form.
+5. Fill out the details and submit.
+
+
+## What to Include in Your Report
+
+To help us triage and fix the issue quickly, please include as much of the following as possible:
+
+*   **Impact:** A clear description of the vulnerability and what an attacker could achieve.
+*   **Scope:** Component(s), endpoints, or modules affected.
+*   **Steps to Reproduce:** Clear, step-by-step instructions (or a minimal proof-of-concept script).
+*   **Environment:** Relevant software versions, OS, or configuration details.
+*   **Remediation:** Any suggested fixes or temporary mitigations, if known.
+
+## Our Process
+
+*   **Acknowledgement:** We will acknowledge receipt of your private report within 48 hours.
+*   **Triage:** We will investigate the issue and keep you updated through the private GitHub Advisory workspace.
+*   **Fix & Release:** Once a patch is ready, we will coordinate a security release and publish a formal GitHub Security Advisory, giving you full credit for the discovery (unless you prefer to remain anonymous).

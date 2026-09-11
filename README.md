@@ -60,12 +60,12 @@ Claude or any other agent to shell out to via a Bash-style tool, no Python
 import needed:
 
 ```
-python3 scores3830.py find-call N5ZY
-python3 scores3830.py list-contests
-python3 scores3830.py search-contests "sprint" --limit 5
-python3 scores3830.py list-editions "https://www.3830scores.com/listeditions.php?arg=..."
-python3 scores3830.py get-scores "https://www.3830scores.com/breakdownscores.php?arg=..."
-python3 scores3830.py get-rumor "https://www.3830scores.com/showrumor.php?arg=..."
+python3 src/scores3830.py find-call N5ZY
+python3 src/scores3830.py list-contests
+python3 src/scores3830.py search-contests "sprint" --limit 5
+python3 src/scores3830.py list-editions "https://www.3830scores.com/listeditions.php?arg=..."
+python3 src/scores3830.py get-scores "https://www.3830scores.com/breakdownscores.php?arg=..."
+python3 src/scores3830.py get-rumor "https://www.3830scores.com/showrumor.php?arg=..."
 ```
 
 `search-contests` fuzzy-matches against the ~300+ names in `list_contests()`
@@ -86,13 +86,19 @@ TTL 6h, in `.cache/`).
 
 ## Use as a library
 
+The module lives in `src/`, so either run with `PYTHONPATH=src` or add
+`src/` to `sys.path` yourself:
+
 ```python
+import sys
+sys.path.insert(0, "src")
+
 from scores3830 import Fetcher, find_call, get_rumor
 
 f = Fetcher()
 history = find_call("N5ZY", f)
 rumor = get_rumor(history[0].rumor_url, f)
-print(rumor.total_score, rumor.comment_text)
+print(rumor.total_score, rumor.soapbox_text)
 ```
 
 ## Limitations

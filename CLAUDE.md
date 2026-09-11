@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A read-only crawler/parser for 3830scores.com (ham radio contest score
-rumors), built as a single-file CLI/library (`scores3830.py`) so an AI
+rumors), built as a single-file CLI/library (`src/scores3830.py`) so an AI
 agent can shell out to it (JSON in/out) or import it directly.
 
 **Access to 3830scores.com was explicitly approved by the site operator
@@ -27,11 +27,15 @@ pytest                                 # full suite (~107 tests, offline, <2s)
 pytest tests/test_get_scores.py        # one file
 pytest tests/test_get_scores.py::TestBreakdownScoresWithBands::test_band_names_are_real_band_labels_not_placeholders  # one test
 
-python3 scores3830.py find-call N5ZY   # CLI, JSON to stdout; see README for all subcommands
+python3 src/scores3830.py find-call N5ZY   # CLI, JSON to stdout; see README for all subcommands
 ```
 
 There is no build/compile step and no linter run locally by convention
 (flake8 config in `.flake8` exists only for the conda CI workflow below).
+Source lives under `src/`; `pytest.ini` sets `pythonpath = src` so tests
+import `scores3830` directly — a library caller outside pytest needs
+`PYTHONPATH=src` (or an equivalent `sys.path` insert) for the same import
+to work.
 
 ### CI
 
@@ -50,7 +54,7 @@ There is no build/compile step and no linter run locally by convention
 Every data page on 3830scores.com is addressed by an opaque `arg=` token
 that looks encrypted and is only discoverable by following a link found on
 some other page. There is no way to construct "scores for contest X on
-date Y" from parameters. Consequently every function in `scores3830.py`
+date Y" from parameters. Consequently every function in `src/scores3830.py`
 either starts from one of two stable, guessable entry points or takes a
 URL scraped from a previous call's output:
 

@@ -8,8 +8,7 @@ A read-only crawler/parser for 3830scores.com (ham radio contest score
 rumors), built as a single-file CLI/library (`src/scores3830.py`) so an AI
 agent can shell out to it (JSON in/out) or import it directly.
 
-Don't raise `MIN_INTERVAL`, remove the `X-Requested-By` identifying header,
-or point this tool's fetching logic at any other site without checking
+Don't raise `MIN_INTERVAL`, or point this tool's fetching logic at any other site without checking
 `SECURITY.md` for the host-allowlist guard that enforces where it's allowed
 to fetch from in code.
 

@@ -3,13 +3,6 @@
 A crawler/parser for [3830scores.com](https://www.3830scores.com/), the
 ham radio contest "score rumors" site.
 
-**Authorization:** access for this tool was explicitly approved by the site
-operator, Bruce Horn (WA7BNM). The site's `robots.txt` otherwise disallows
-bots — including ClaudeBot by name — from every data-bearing page. Do not
-point this at 3830scores.com without your own separate confirmation from
-Bruce, and don't raise the request rate or strip the identifying header
-below without checking with him first.
-
 ## Why this is a crawler, not a URL-builder
 
 Every data page on 3830scores.com is addressed by an opaque, encrypted-looking

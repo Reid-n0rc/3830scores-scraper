@@ -55,34 +55,6 @@ gone wrong upstream of it.
 
 ---
 
-## Authorization, not just access control
-
-Separately from the technical guard above: access to 3830scores.com by this
-tool was explicitly approved by the site operator, Bruce Horn (WA7BNM). The
-site's own `robots.txt` otherwise disallows bots — **including ClaudeBot by
-name** — from every data-bearing page (`findcall.php`, `showrumor.php`,
-`breakdownscores.php`, `editionscores.php`, `listeditions.php`, etc).
-
-That means the authorization boundary here isn't purely code-enforceable:
-
-- **Do not point this tool at 3830scores.com without your own separate
-  confirmation from the site operator.** A green light for one use case
-  doesn't transfer to a different one.
-- **Do not raise `MIN_INTERVAL`, remove the `X-Requested-By` header, or
-  swap the User-Agent** without checking with the operator first — all
-  three exist because the approval was for polite, identified, rate-limited
-  reads, not unrestricted crawling.
-- **Do not repurpose the HTML-entity email decoding** in `get_rumor()` for
-  anything beyond this tool's own approved use. The site obfuscates those
-  addresses specifically to defeat scraping; this tool decodes them only to
-  populate its own data model, not to build a mailing list.
-
-If you fork or extend this tool to scrape a *different* site, none of the
-above authorization carries over — it applies to 3830scores.com only, and
-only for the use Bruce Horn approved.
-
----
-
 ## Forbidden patterns
 
 None of the following appear in this codebase, and none should be added:
